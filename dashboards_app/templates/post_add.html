@@ -1,0 +1,116 @@
+{% load static %}
+{% load widget_tweaks %}
+                <!--Create modal -->
+                    <div class="modal-bod pl-2 pr-2">
+                        <textarea class="calendar-input"  id='postContent' data-id="nonee" cols="30" rows="10"
+                            placeholder="📜Bir yerə toplaşmaq başlanğıc, bir yerdə olmaq irəliləmək, birlikdə işləmək isə uğurdur. (c) Henri Ford"></textarea>
+                        <input type='hidden' id='postid' value='0'>
+                    </div>
+                    <div class="modal-footer">
+                        <form enctype="multipart/form-data" method="POST" action="" id="myForm">
+
+                            <div class="row">
+                                {% csrf_token %}
+                                <div class="col cla-col">
+                                    <label  class="label-calendar" for="">Add media</label>
+                                    <input type="file" id="imgupload" style="display:none" name="file"/>
+                                    <button  id="OpenImgUpload" class="edit-uppload-calendar">+</button>
+
+                                </div>
+                                <div class="col cla-col">
+                                    <select id="inputState" class="form-control">
+                                        <option selected>Select topic</option>
+                                        <option class="calendar-option-1">Fun facts</option>
+                                        <option class="calendar-option-2">Events</option>
+                                        <option class="calendar-option-3" >Partners info</option>
+
+                                    </select>
+                                </div>
+
+                                <div class="col cla-col">
+                                    <label  class="label-calendar" for="">SET date</label>
+                                    <input type="text" class="form-control calender-date-input"
+                                        placeholder="dd / mm/yyyy">
+                                </div>
+
+                                <div class="col cla-col">
+                                    <label class="label-calendar" for="">SET TIME</label>
+                                    <input type="text" class="form-control calender-time-input"
+                                        placeholder="dd / mm / yyyy">
+                                </div>
+                            </div>
+                            <div class="modal-foote text-right pr-3 pb-3">
+                        <button type="button" class="btn calander-done" id="submit" data-dismiss="modal">Done</button>
+                    </div>
+                        </form>
+
+                    </div>
+
+
+<script>
+    $('#myForm').on("submit", function(){
+    return false;
+});
+    $("#OpenImgUpload").on("click", function(){
+    $("#imgupload").click();
+});
+
+</script>
+ <script>
+    $(document).ready(function () {
+        var timer;
+        var timeout = 3000; // Timout duration
+        $('#postContent').keyup(function () {
+            if (timer) {
+                clearTimeout(timer);
+            }
+            timer = setTimeout(saveData, timeout);
+
+        });
+
+        $('#submit').click(function () {
+            saveData();
+        });
+    });
+
+    // Save data
+    function saveData() {
+
+        var content = $('#postContent').val().trim();
+        var postid = $('#postid').val();
+        var data_id = $('#postContent').attr('data-id')
+
+
+        if (content) {
+            // AJAX request
+            content = $('#postContent').val().trim();
+            var post_image = $('#imgupload').val()
+            console.log(post_image)
+            $.ajax({
+                url: "{% url 'add_post' %}",
+                method: "POST",
+                data: {
+                    content: content,
+                    postid: data_id,
+                    post_image:post_image,
+                    csrfmiddlewaretoken: "{{ csrf_token }}"
+                },
+                success: function (data) {
+                    console.log(data)
+
+                    if (data.id) {
+                        console.log(data.id)
+                        $('#postContent').attr('data-id', data.id)
+                    }
+                    else{
+                        console.log(data)
+                    }
+                },
+                error: function (xhr, err, msg) {
+                    console.log(xhr, err, msg);
+                }
+            });
+
+        }
+    }
+    </script>

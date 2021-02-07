@@ -1,0 +1,81 @@
+<!-- commit-prject -->
+
+<div class="create-project-important-all">
+    <div class="important-project">
+        <div class="container">
+            <div class="row ">
+
+                <div class="col-8 col-sm-8 col-md-8 col-lg-8 col-xl-8">
+                    <div class="coment-project-div">
+                        <div class="project-coment-div">
+                            <img src="./style/mystyle/img/Group 112.png" alt=""
+                                 class="coment-project-img">
+                        </div>
+                        <div class="coment-project-name">
+                            <h2 class="coment-name">{{ data.team_name }}</h2>
+                            {#                                            <h6>Project #1024</h6>#}
+                        </div>
+                    </div>
+
+                    <div class="coment-title">
+                        <div class="h3">BRIEF</div>
+                        <h6>{{ data.description }}
+                        </h6>
+                    </div>
+
+
+                </div>
+                <div class="col-4 col-sm-4 col-md-4 col-lg-4 col-xl-4">
+                    <div class="due-date">
+                        <div class="start-and-due-data">
+                            Start and Due date
+                        </div>
+                        <h6>
+                            {{ data.start_time }} - {{ data.end_time }}
+                        </h6>
+                    </div>
+                    <div class="posting-button mt-3">
+                        <h2>
+                            Posting on
+                        </h2>
+                        <div class="button-div">
+                            <button>Facebook</button>
+                        </div>
+                    </div>
+
+                    {% if members %}
+
+                        <div class="commit-flow mt-3">
+                            <h2>FLOW</h2>
+                            <div class="flow-commit-bottom">
+                                {% for field in members %}
+                                    <button>{{ field.member_status }}</button>
+                                {% endfor %}
+                            </div>
+                        </div>
+                        <div class="assigment-button mt-3">
+                            <h2>
+                                Assigness
+                            </h2>
+                            <div class="button-div">
+                                {% for field in members %}
+                                    <button>{{ field.member.username }}</button>
+                                {% endfor %}
+                            </div>
+                        </div>
+
+                    {% endif %}
+
+                    <div class="assigment-button mt-3">
+                        <h2>
+                            Manager
+                        </h2>
+                        <div class="button-div">
+                            <button>{{ leader.member.username }}</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

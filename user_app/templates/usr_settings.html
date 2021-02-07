@@ -1,0 +1,84 @@
+{% extends 'main_base.html' %}
+{% load static %}
+{% load widget_tweaks %}
+{% block content %}
+
+    <div class="container emp-profile">
+        <form method="post" enctype="multipart/form-data">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div class="logo-div mx-auto d-block">
+                        <img class="profile-logo  " src="{% static './style/mystyle/img/logo.png' %}" alt="">
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="profile-img">
+                        <img src="{{ request.user.profile_photo.url }}"
+                             alt=""/>
+                        <div class="file btn btn-lg btn-primary">
+                            Change Photo
+                            {% render_field form.profile_photo class='sign-email-password' placeholder=field.label %}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 col-sm-12 col-md-8 col-lg-8 col-xl-8">
+                    <form method="post" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <div class="row">
+                            <div class="col">
+                                {% render_field form.username class='form-control profile-inputt' placeholder='Username' %}
+                            </div>
+                            <div class="col">
+                                {% render_field form.first_name class='form-control profile-inputt' placeholder='First Name' %}
+                            </div>
+                            <div class="col">
+                                {% render_field form.last_name class='form-control profile-inputt' placeholder='Last Name' %}
+                            </div>
+
+                        </div>
+                        <div class="row mt-3 mb-3">
+                            <div class="col">
+                                {% render_field form.city class='form-control profile-inputt' placeholder="City" %}
+                            </div>
+                            <div class="col">
+                                {% render_field form.country class='form-control profile-inputt' placeholder="Country" %}
+                            </div>
+
+                        </div>
+                        <div class="row mt-3 mb-3">
+                            <div class="col-md-4">
+                                {% render_field form.gender class='form-control profile-inputt' placeholder=field.label %}
+
+                            </div>
+
+                        </div>
+                        <div class="row">
+                            <div class="col" style="display: flex">
+                                {% render_field form.birthday class='form-control profile-inputt' placeholder=field.label %}
+                            </div>
+                        </div>
+
+                    </form>
+                    <button type="submit" class=" btn-lg btn-block profile-cahnhe-button">Change Settings</button>
+                </div>
+
+
+            </div>
+        </form>
+    </div>
+    <script>
+        function readURL(input) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('#blah')
+                        .attr('src', e.target.result);
+                };
+
+                reader.readAsDataURL(input.files[0]);
+            }
+        }
+    </script>
+{% endblock %}

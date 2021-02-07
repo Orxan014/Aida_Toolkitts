@@ -1,0 +1,229 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+    <div class="dashboard-all  ">
+
+        <!-- menu -->
+        <div class="sticky-top stick-top">
+            <div class="container-fluid ">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="menu-all">
+                            <div class="project">Events calendar</div>
+                            <div class="a-links ">
+
+                            </div>
+                            <div class="users">
+                                <div class="user-name">David Morgan</div>
+                                <div class="user-img-div ">
+                                    <img src="{% static 'style/mystyle/img/Rectangle%2010.png' %}" alt="" class="profile-img">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                        <div class="menu-section-5">
+                            <div class="calendar-timme ">
+                                Month 2020
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                    <div id='calendar'>
+                        <div class="calendar-grid">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- modal button -->
+        <div class="button-open" data-url="{% url 'add_post' %}" data-dismiss="modal" aria-hidden="true" data-toggle="modal"  data-target="#exampleModalCenter">
+            <div class="btn-menu c-btn click-open-close btn-menu_active ">
+                <span></span>
+            </div>
+        </div>
+
+         <!-- Create Modal -->
+        <div class="modal fade calendar-modal" id="exampleModalCenter" tabindex="-1" data-backdrop="static"
+             role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
+           <div class="modal-dialog modal-dialog-centered" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="exampleModalCenterTitle b-id"><img
+                                src="#" alt=""> <span class="ml-2"><img
+                                src="#" alt=""></span></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true"><img src="{% static 'style/mystyle/img/happy%201.png' %}" alt=""></span>
+                        </button>
+                    </div>
+                    <div id="add_post">
+
+                    </div>
+
+                </div>
+           </div>
+        </div>
+
+
+        <!-- modal 2 -->
+        <div class="modal fade" id="exampleModalLong" tabindex="-1" role="dialog" aria-labelledby="exampleModalLongTitle" aria-hidden="true">
+            <div class="modal-dialog modal-calendar-dialoq" role="document">
+              <div class="modal-content">
+                <div class="modal-header">
+                  <h5 class="modal-title modal-2-mounth" id="exampleModalLongTitle"></h5>
+                  
+                </div>
+                <div class="modal-body">
+                    <div class="modal-content mb-4">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle b-id"><img
+                                    src="../../static/style/mystyle/img/editor-bold.png" alt=""> <span class="ml-2"><img
+                                    src="../../static/style/mystyle/img/editor-italic.png" alt=""></span></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"><img src="../../static/style/mystyle/img/happy%201.png" alt=""></span>
+                            </button>
+                        </div>
+
+                        <div class="modal-bod pl-2 pr-2">
+                            <textarea class="calendar-input" name="" id="" cols="30" rows="10"
+                                placeholder="📜 Bir yerə toplaşmaq başlanğıc, bir yerdə olmaq irəliləmək, birlikdə işləmək isə uğurdur. (c) Henri Ford"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <form>
+                                <div class="row">
+                                    <div class="col cla-col">
+                                    <label  class="label-calendar" for="">Add media</label>
+                                    <input type="file" id="imgupload" style="display:none"/>
+                                    <button id="OpenImgUpload" class="edit-uppload-calendar">+ </button>
+                                </div>
+                                <div class="col cla-col">
+                                    <select id="inputState" class="form-control">
+                                        <option selected>Select topic</option>
+                                        <option class="calendar-option-1">Fun facts</option>
+                                        <option class="calendar-option-2">Events</option>
+                                        <option class="calendar-option-3" >Partners info</option>
+
+                                    </select>
+                                </div>
+                                   
+                                    <div class="col cla-col">
+                                        <label  class="label-calendar" for="">SET date</label>
+                                        <input type="text" class="form-control calender-date-input"
+                                            placeholder="dd / mm/yyyy">
+                                    </div>
+                                    
+                                    <div class="col cla-col">
+                                        <label class="label-calendar" for="">SET TIME</label>
+                                        <input type="text" class="form-control calender-time-input"
+                                            placeholder="dd / mm / yyyy">
+                                    </div>
+                                </div>
+                            </form>
+                           
+                        </div>
+                        <div class="modal-foote text-right pr-3 pb-3">
+                            <button type="button" class="btn calander-done" data-dismiss="modal">Done</button>
+                        </div>
+                    </div>
+
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="exampleModalCenterTitle b-id"><img
+                                    src="#" alt=""> <span class="ml-2"><img
+                                    src="#" alt=""></span></h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true"><img src="{% static 'style/mystyle/img/happy%201.png' %}" alt=""></span>
+                            </button>
+                        </div>
+
+                        <div class="modal-bod pl-2 pr-2">
+                            <textarea class="calendar-input" name="" id="" cols="30" rows="10"
+                                placeholder="📜 Bir yerə toplaşmaq başlanğıc, bir yerdə olmaq irəliləmək, birlikdə işləmək isə uğurdur. (c) Henri Ford"></textarea>
+                        </div>
+                        <div class="modal-footer">
+                            <form>
+                                <div class="row">
+                                    <div class="col cla-col">
+                                    <label  class="label-calendar" for="">Add media</label>
+                                    <input type="file" id="imgupload" style="display:none"/>
+                                    <button id="OpenImgUpload" class="edit-uppload-calendar">+ </button>
+                                </div>
+                                <div class="col cla-col">
+                                    <select id="inputState" class="form-control">
+                                        <option selected>Select topic</option>
+                                        <option class="calendar-option-1">Fun facts</option>
+                                        <option class="calendar-option-2">Events</option>
+                                        <option class="calendar-option-3" >Partners info</option>
+
+                                    </select>
+                                </div>
+                                   
+                                    <div class="col cla-col">
+                                        <label  class="label-calendar" for="">SET date</label>
+                                        <input type="text" class="form-control calender-date-input"
+                                            placeholder="dd / mm/yyyy">
+                                    </div>
+                                    
+                                    <div class="col cla-col">
+                                        <label class="label-calendar" for="">SET TIME</label>
+                                        <input type="text" class="form-control calender-time-input"
+                                            placeholder="dd / mm / yyyy">
+                                    </div>
+                                </div>
+                            </form>
+                           
+                        </div>
+                        <div class="modal-foote text-right pr-3 pb-3">
+                            <button type="button" class="btn calander-done" data-dismiss="modal">Done</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer ">
+                  <button type="button" class="btn modal-close-btnn" data-dismiss="modal">Close</button>
+                  
+                </div>
+              </div>
+            </div>
+          </div>
+
+    </div>
+    <script
+        src="https://code.jquery.com/jquery-3.4.1.min.js"
+        integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo="
+        crossorigin="anonymous"></script>
+    <script src="{% static 'style/mystyle/js/ajax.js' %}"></script>
+
+    <script>
+     $('.button-open').click(function () {
+
+        var url = $(this).attr('data-url');
+
+        $.ajax({
+            url: url,
+            method: "GET",
+
+            success: function (data) {
+                $('#add_post').html(data)
+
+            },
+
+            error: function (xhr, err, msg) {
+                console.log(xhr, err, msg);
+            }
+        });
+
+    })
+    </script>
+{% endblock %}

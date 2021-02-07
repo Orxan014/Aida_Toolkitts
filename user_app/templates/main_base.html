@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+{% load static %}
+{% load widget_tweaks %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aidatoolkit</title>
+    <link rel="stylesheet" href="{% static './style/font_awesome/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static './style/bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static './style/mystyle/css/style.css' %}">
+    <link rel="stylesheet" href="{% static './style/animate/animate.min.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+
+
+{% block content %}{% endblock %}
+
+
+<script src="{% static './style/bootstrap/jquery/jquery-3.4.1.min.js' %}"></script>
+<script src="{% static './style/bootstrap/jquery/popper.min.js' %}"></script>
+<script src="{% static './style/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static './style/font_awesome/js/all.min.js' %}"></script>
+<script src="{% static './style/mystyle/js/style.js' %}"></script>
+</body>
+
+</html>

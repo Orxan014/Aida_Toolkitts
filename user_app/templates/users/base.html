@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+{% load widget_tweaks %}
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <title>Aidatoolkit</title>
+    <link rel="stylesheet" href="{% static './style/bootstrap/css/bootstrap.min.css'  %}">
+    <link rel="stylesheet" href="{% static './style/mystyle/css/style.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=PT+Sans&display=swap" rel="stylesheet">
+</head>
+<body>
+
+{% block content %}{% endblock %}
+ <script src="{% static './style/bootstrap/jquery/jquery-3.4.1.min.js' %}"></script>
+    <script src="{% static './style/bootstrap/jquery/popper.min.js' %}"></script>
+    <script src="{% static './style/bootstrap/js/bootstrap.min.js' %}"></script>
+</body>
+
+</html>
